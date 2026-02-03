@@ -1,11 +1,8 @@
-# ==============================================================================
 # Time Tagger ZC706 Project
-# ==============================================================================
 #
 # High-precision Time-to-Digital Converter (TDC) with AXI DMA streaming
 # Target: Xilinx ZC706 Evaluation Board (XC7Z045)
 #
-# ==============================================================================
 
 ## Directory Structure
 
