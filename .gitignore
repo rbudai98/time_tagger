@@ -1,0 +1,89 @@
+# ===================================
+# Vivado Project Build Files
+# ===================================
+
+# Vivado generated/cache directories (keep .srcs for source files and .xpr project file)
+*.cache/
+*.gen/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+
+# Vivado temp and log files
+*.jou
+*.log
+*.str
+*.backup.jou
+*.backup.log
+.Xil/
+
+# Vivado hardware output files
+*.bit
+*.ltx
+*.dcp
+*.xsa
+
+# ===================================
+# Vitis Project Build Files
+# ===================================
+
+# Vitis build output
+vitis_project/**/build/
+vitis_project/**/Debug/
+vitis_project/**/Release/
+
+# Vitis generated platform files
+vitis_project/**/export/
+vitis_project/**/hw/
+vitis_project/**/ps7_*/
+vitis_project/**/_ide/
+vitis_project/**/.rigel_lopper/
+vitis_project/**/logs/
+
+# Vitis settings (auto-generated)
+vitis_project/**/.settings/
+
+# ===================================
+# Software Build Files
+# ===================================
+
+# Object and dependency files
+*.o
+*.d
+*.obj
+*.elf
+*.map
+
+# Build directories
+/build/
+**/build/
+
+# ===================================
+# Binary/Output Files
+# ===================================
+
+*.bin
+*.pdi
+*.a
+*.so
+*.lib
+
+# ===================================
+# General
+# ===================================
+
+# Lock files
+*.lock
+
+# Log directories
+/logs/
+
+# IDE/Editor files
+.theia/
+*.swp
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
