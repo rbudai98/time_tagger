@@ -213,7 +213,7 @@ module tb_top_level;
                 phase_ps = $urandom % CLK_200M_PERIOD;
 
                 #(gap_ns * 1000);  // Wait gap (convert ns to ps)
-                send_pulse(phase_ps, 500);  // 500ps pulse width
+                send_pulse(phase_ps, 6000);  // 6000ps pulse width (spans clock edge)
             end
         end
     endtask
@@ -228,8 +228,8 @@ module tb_top_level;
                      $time, num_pulses, spacing_ns);
 
             for (i = 0; i < num_pulses; i = i + 1) begin
-                send_pulse(1000, 500);  // Fixed 1ns phase, 500ps width
-                #(spacing_ns * 1000 - 1500);  // Subtract pulse overhead
+                send_pulse(1000, 6000);  // Fixed 1ns phase, 6000ps width (spans clock edge)
+                #(spacing_ns * 1000 - 7000);  // Subtract pulse overhead
             end
         end
     endtask
@@ -245,7 +245,7 @@ module tb_top_level;
 
             for (i = 0; i < num_steps; i = i + 1) begin
                 phase = i * step_ps;
-                send_pulse(phase, 500);
+                send_pulse(phase, 6000);  // 6000ps width (spans clock edge)
                 #(100 * 1000);  // 100ns between pulses
             end
         end
@@ -339,7 +339,7 @@ module tb_top_level;
         $display("============================================================");
 
         // Send pulse while disabled (should NOT be captured)
-        send_pulse(1000, 500);
+        send_pulse(1000, 6000);
         #(CLK_200M_PERIOD * 20);
         print_status();
 
@@ -355,7 +355,7 @@ module tb_top_level;
         $display("\n[%0t] Time tagger ENABLED", $time);
 
         // Send pulse while enabled
-        send_pulse(1000, 500);
+        send_pulse(1000, 6000);
         #(CLK_200M_PERIOD * 20);
         print_status();
 
@@ -495,15 +495,6 @@ module tb_top_level;
         #SIMULATION_TIME;
         $display("\nWARNING: Simulation timeout reached!");
         $finish;
-    end
-
-    // =========================================================================
-    // Rising Edge on tdc_hit_0 on Every Clock Cycle
-    // =========================================================================
-    always @(posedge clk_200mhz) begin
-        tdc_hit_0 = 1;
-        #10;
-        tdc_hit_0 = 0;
     end
 
     // =========================================================================
